@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+    xmlns:controls="clr-namespace:XamMusic.Controls;assembly=XamMusic"
+    xmlns:effects="clr-namespace:XamMusic.Effects"
+    x:Class="XamMusic.Controls.MusicBarControl"
+    x:Name="MusicBar" Margin="0,0,0,0" Padding="0,0,0,0" BackgroundColor="Black">
+    <ContentView.Content>
+        <Grid Margin="0,0,0,0" Padding="0,0,0,0" ColumnSpacing="0" RowSpacing="0">
+            <!--<Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>-->
+            
+            <cv:CarouselView x:Name="Carousel" ItemsSource="{Binding Queue}" Margin="0,0,0,0" Position="{Binding QueuePos, Mode=TwoWay}">
+                <cv:CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid BackgroundColor="Black" Margin="0,0,0,0" Padding="0,0,0,0" ColumnSpacing="6" RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="4"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="4" />
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="4" Clicked="OpenNowPlayingPopup" BackgroundColor="Transparent" BorderColor="Transparent" BorderWidth="0" />
+                            <ProgressBar Grid.Row="0" BindingContext="{Binding Source={x:Reference MusicBar}, Path=BindingContext}" Progress="{Binding Progress}" Margin="0,0,0,0" Grid.ColumnSpan="4">
+                                <ProgressBar.Effects>
+                                    <effects:BlueProgressBarEffect />
+                                </ProgressBar.Effects>
+                            </ProgressBar>
+                            <controls:ArtworkImage Grid.Row="1" Grid.Column="0" x:Name="ArtworkImage" Margin="6,0,0,0" Artwork="{Binding Artwork}" IsVisible="{Binding HasArtwork}" HeightRequest="45" WidthRequest="45"/>
+                            <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Vertical" Margin="0,0,0,0" Padding="0,0,0,0" Spacing="0" HorizontalOptions="Start" VerticalOptions="Center">
+                                <Label Text="{Binding Title}" Margin="0,0,0,0" Font="16" FontAttributes="Bold" LineBreakMode="TailTruncation"  HorizontalOptions="Start" TextColor="White"/>
+                                <Label Text="{Binding Artist}" LineBreakMode="TailTruncation"  Margin="0,0,0,0"  HorizontalOptions="Start" TextColor="LightGray"/>
+                            </StackLayout>
+                            <controls:PlayPauseControl Grid.Row="1" Grid.Column="2" HeightRequest="30" WidthRequest="30"/>
+                            <!--<Image Source="play_w.png" Grid.Row="1" Grid.Column="2" BindingContext="{Binding Source={x:Reference MusicBar}, Path=BindingContext}" IsVisible="{Binding IsNotPlaying}" HeightRequest="40" WidthRequest="40">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding PlayCommand}" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Image Source="pause_w.png" Grid.Row="1" Grid.Column="2" BindingContext="{Binding Source={x:Reference MusicBar}, Path=BindingContext}" IsVisible="{Binding IsPlaying}" HeightRequest="40" WidthRequest="40">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding PauseCommand}" />
+                                </Image.GestureRecognizers>
+                            </Image>-->
+                        </Grid>
+                    </DataTemplate>
+                </cv:CarouselView.ItemTemplate>
+            </cv:CarouselView>
+        </Grid>
+    </ContentView.Content>
+</ContentView>
